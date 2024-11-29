@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slow Roast Kawiarnia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylekawiarnia.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#home" class="nav-logo">
+                <h2 class="logo-text"><img src="Logo SR.png" alt="Logo SR"></h2>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Strona główna</a></li>
+                <li class="nav-item"><a href="#onas" class="nav-link">O nas</a></li>
+                <li class="nav-item"><a href="#oferta" class="nav-link">Oferta</a></li>
+                <li class="nav-item"><a href="#lokale" class="nav-link">Nasze lokale</a></li>
+                <li class="nav-item"><a href="#kontakt" class="nav-link">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="baner">
+        <div class="baner-text">
+            <h2 class="title">Slow Roast</h2>
+            <h3 class="subtitle">Smak, który dojrzewa w rytmie slow.</h3>
+            <div class="button order">
+                <a href="#sklep" class="button order-now">Zamów teraz</a>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="onas">
+        <div class="onas-container">
+            <div class="onas-text">
+                <h2>O nas</h2>
+                <p>W Slow Roast wierzymy, że najlepsze rzeczy w życiu powstają bez pośpiechu. Nasza palarnia to hołd dla
+                    idei slow life – filozofii życia w zgodzie z naturą, w rytmie, który pozwala dostrzec piękno detali.
+                </p>
+                <p>Każde ziarno, które trafia do naszej palarni, jest wybierane z największą starannością.
+                    Współpracujemy z małymi plantacjami, które dzielą nasze wartości: zrównoważony rozwój, troskę o
+                    środowisko i ludzi. Proces palenia traktujemy jak sztukę – każda partia ziaren to osobna historia,
+                    którą odkrywamy, by wydobyć z niej to, co najlepsze.</p>
+                <p>Zapraszamy Cię do świata kawy, która celebruje momenty – od pierwszego łyka, aż po cichy uśmiech
+                    zadowolenia. Slow Roast to nie tylko kawa. To sposób, by na chwilę zatrzymać czas i odnaleźć spokój
+                    w codziennym zgiełku.</p>
+            </div>
+            <div class="onas-slider">
+                <div class="onas-slide active"><img src="Onas1.png" alt="Kawiarnia 1"></div>
+                <div class="onas-slide"><img src="Onas2.png" alt="Kawiarnia 2"></div>
+                <div class="onas-slide"><img src="Onas3.png" alt="Kawiarnia 3"></div>
+                <div class="onas-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                </div>
+            </div>
+        
+            <script>
+                const slides = document.querySelectorAll('.onas-slide');
+                const dots = document.querySelectorAll('.dot');
+        
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        // Usunięcie klasy 'active' ze wszystkich slajdów i kropek
+                        slides.forEach(slide => slide.classList.remove('active'));
+                        dots.forEach(dot => dot.classList.remove('active'));
+        
+                        // Aktywowanie wybranego slajdu i kropki
+                        slides[index].classList.add('active');
+                        dot.classList.add('active');
+                    });
+                });
+            </script>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll(".onas-slide");
+            const totalSlides = slides.length;
+            function changeSlide(direction) {
+                slides.forEach(slide => slide.classList.remove("active"));
+                currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+                slides[currentSlide].classList.add("active");
+            }
+            setInterval(() => changeSlide(1), 6000);
+            changeSlide(0);
+        });
+    </script>
+
+<section id="oferta">
+    <h2>Oferta</h2>
+    <div class="oferta-container">
+        <!-- Karta 1 -->
+        <div class="oferta-card">
+            <img src="2.png" alt="Kawa Arabica" class="oferta-img">
+            <div class="oferta-card-info">
+                <h3>Arabica</h3>
+                <p>Delikatna kawa o subtelnym smaku, z nutami owoców i kwiatów.</p>
+                <button class="more-info-btn">Więcej</button>
+                <div class="oferta-description">
+                    <p><strong>Pochodzenie:</strong> Etiopia, Brazylia</p>
+                    <p><strong>Smak:</strong> Owocowy, kwiatowy</p>
+                    <p><strong>Idealna do:</strong> Espresso, kawa mleczna</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Karta 2 -->
+        <div class="oferta-card">
+            <img src="3.png" alt="Kawa Robusta" class="oferta-img">
+            <div class="oferta-card-info">
+                <h3>Robusta</h3>
+                <p>Intensywna kawa z wysoką zawartością kofeiny, o wyrazistym smaku.</p>
+                <button class="more-info-btn">Więcej</button>
+                <div class="oferta-description">
+                    <p><strong>Pochodzenie:</strong> Wietnam, Indonezja</p>
+                    <p><strong>Smak:</strong> Orzechowy, czekoladowy</p>
+                    <p><strong>Idealna do:</strong> Mocne espresso</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Karta 3 -->
+        <div class="oferta-card">
+            <img src="4.png" alt="Kawa Liberica" class="oferta-img">
+            <div class="oferta-card-info">
+                <h3>Liberica</h3>
+                <p>Wyjątkowa kawa o dużych ziarnach, o smaku tropikalnych owoców.</p>
+                <button class="more-info-btn">Więcej</button>
+                <div class="oferta-description">
+                    <p><strong>Pochodzenie:</strong> Filipiny, Malezja</p>
+                    <p><strong>Smak:</strong> Owocowy, z nutami dymnymi</p>
+                    <p><strong>Idealna do:</strong> Kawa mrożona, kawa czarna</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+     document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll('.more-info-btn');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const cardInfo = this.closest('.oferta-card-info');
+                cardInfo.classList.toggle('active');
+            });
+        });
+    });
+</script>
+
+    <section id="lokale">
+        <h2>Nasze lokale</h2>
+        <div class="lokale-container">
+            <div class="lokal"><img src="Warszawa.png" alt="Lokal 1"></div>
+            <div class="lokal"><img src="Wrocław.png" alt="Lokal 2"></div>
+            <div class="lokal"><img src="Kraków.png" alt="Lokal 3"></div>
+        </div>
+    </section>
+
+    <section id="Opinie">
+        <h2>Opinie klientów</h2>
+        <div class="opinie-slider">
+            <button class="prev-btn" onclick="moveSlide('prev')">&#10094;</button>
+
+            <div id="opinie-klientow">
+                <div class="opinia">
+                    <h3>Jan Kowalski</h3>
+                    <div class="ocena">★★★★★</div>
+                    <p>„Świetna kawiarnia! Kawa była pyszna, a atmosfera wyjątkowa. Zdecydowanie wrócę!”</p>
+                </div>
+
+                <div class="opinia">
+                    <h3>Maria Nowak</h3>
+                    <div class="ocena">★★★★☆</div>
+                    <p>„Miła obsługa i świetny wystrój, ale kawa mogłaby być odrobinę mocniejsza. Mimo to, polecam!”</p>
+                </div>
+
+                <div class="opinia">
+                    <h3>Piotr Zieliński</h3>
+                    <div class="ocena">★★★★★</div>
+                    <p>„Najlepsza kawa w mieście! Idealne miejsce na poranną kawę z przyjaciółmi.”</p>
+                </div>
+
+                <div class="opinia">
+                    <h3>Alicja Kwiatkowska</h3>
+                    <div class="ocena">★★★☆☆</div>
+                    <p>„Kawa była dobra, ale oczekiwałam trochę lepszej jakości za tę cenę. Atmosfera ok.”</p>
+                </div>
+            </div>
+
+            <button class="next-btn" onclick="moveSlide('next')">&#10095;</button>
+        </div>
+
+    </section>
+    <section id="sklep">
+        <h2>Sklep</h2>
+        <div class="produkty">
+            <div class="produkt">
+                <img src="Placeholder.png" alt="Produkt 1">
+                <h3>Kawa Arabica</h3>
+                <select class="gramatura">
+                    <option value="200">200g</option>
+                    <option value="1000">1kg</option>
+                </select>
+                <button class="add-to-cart" data-id="1">Dodaj do koszyka</button>
+            </div>
+            <div class="produkt">
+                <img src="Placeholder.png" alt="Produkt 2">
+                <h3>Kawa Robusta</h3>
+                <select class="gramatura">
+                    <option value="200">200g</option>
+                    <option value="1000">1kg</option>
+                </select>
+                <button class="add-to-cart" data-id="2">Dodaj do koszyka</button>
+            </div>
+            <div class="produkt">
+                <img src="Placeholder.png" alt="Produkt 3">
+                <h3>Kawa Liberika</h3>
+                <select class="gramatura">
+                    <option value="200">200g</option>
+                    <option value="1000">1kg</option>
+                </select>
+                <button class="add-to-cart" data-id="3">Dodaj do koszyka</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="logo"><img src="Logo SR.png" alt="Logo"></div>
+        <div class="contact">
+            <p>Adres: ul. Placeholder 1, Miasto</p>
+            <p>Tel: +48 123 456 789</p>
+        </div>
+        <div class="newsletter">
+            <h4>Zapisz się do newslettera</h4>
+            <form>
+                <input type="email" placeholder="Twój email">
+                <button>Wyślij</button>
+            </form>
+        </div>
+        <div class="social-media">
+            <a href="#"><img src="insta.png" alt="Instagram"></a>
+            <a href="#"><img src="fb.png" alt="Facebook"></a>
+            <a href="#"><img src="tt.png" alt="TikTok"></a>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>
+

@@ -1,0 +1,420 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Instrument Serif', serif;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.nav-logo img {
+    height: 70px;
+    margin-right: 10px;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 40px;
+    padding: 0;
+    gap: 20px;
+    left: auto;
+}
+
+.nav-item .nav-link {
+    text-decoration: none;
+    color: rgb(34, 10, 1);
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-item .nav-link:hover {
+    color: white;
+    background-color: #4a342e;
+}
+
+h2 {
+    font-size: 34px;
+    color: #4a342e;
+    font-family: 'Instrument Serif', serif;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.baner {
+    padding: 40px 20px;
+    margin-top: 20px;
+    min-height: 100vh;
+    background-image: url('Baner.png'); /* Obraz jako tło */
+    background-size: cover; /* Dopasowanie rozmiaru */
+    background-position: center; /* Wyśrodkowanie obrazka */
+    background-repeat: no-repeat; /* Zapobiega powtarzaniu */
+    color: #000; /* Tekst na tle */
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 50px;
+    
+}
+
+.baner-text{
+    font-size: 20px;
+    line-height: 1.6;
+    margin-left: 50px;    
+}
+
+.button.order-now {
+    display: inline-block; /* Aby przycisk był blokiem inline */
+    text-decoration: none; /* Usunięcie podkreślenia */
+    color: white; /* Tekst w kolorze białym */
+    background-color: #4a342e; /* Kolor tła */
+    font-size: 18px; /* Rozmiar tekstu */
+    padding: 10px 30px; /* Wewnętrzne odstępy (góra/dół, lewo/prawo) */
+    border-radius: 30px; /* Zaokrąglone rogi dla owalnego kształtu */
+    transition: outline 0.3s ease, color 0.3s ease; /* Płynne przejścia efektów */
+}
+
+
+.button.order-now:hover {
+    outline: 2px solid #4a342e; /* Obrys wokół przycisku */
+    background-color: transparent; /* Przezroczyste tło */
+    color: #4a342e; /* Tekst w kolorze tła */
+}
+
+
+#onas {
+    padding: 50px; 
+}
+
+.onas-container {
+    display: flex;
+    gap: 70px;
+    padding-left: 20 px;
+    padding-top: 20px;
+}
+
+.onas-text {
+    flex: 1;
+    max-width: 50%;
+    color: #4a342e;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+    
+}
+
+.onas-slider {
+    position: relative;
+    flex: 1;
+    max-width: 50%;
+    overflow: hidden;
+}
+
+.onas-slide {
+    display: none;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.onas-slide.active {
+    display: block;
+}
+
+.onas-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* Oferta */
+#oferta {
+    padding: 50px 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+#oferta h2 {
+    font-size: 36px;
+    color: #4a342e;
+    font-family: 'Instrument Serif', serif;
+    margin-bottom: 30px;
+}
+
+
+.oferta-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+
+.oferta-card {
+    background-color: #fff;
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.oferta-card:hover {
+    transform: scale(1.05);
+}
+
+.oferta-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Informacje o kawie */
+.oferta-card-info {
+    padding: 20px;
+    text-align: left;
+}
+
+.oferta-card-info h3 {
+    font-size: 24px;
+    color: #4a342e;
+}
+
+.oferta-card-info p {
+    font-size: 16px;
+    color: #555;
+}
+
+.oferta-description {
+    display: none;
+    font-size: 14px;
+    color: #444;
+}
+
+.more-info-btn {
+    background-color: #4a342e;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.more-info-btn:hover {
+    background-color: #6f4f42;
+}
+
+.oferta-card-info.active .oferta-description {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .oferta-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Lokale */
+#lokale {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 50px 30px;
+}
+
+.lokale-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
+
+.lokal {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.lokal:hover {
+    transform: scale(1.1);
+}
+
+.lokal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+}
+
+.lokal:hover img {
+    filter: grayscale(0);
+}
+
+#Opinie {
+    padding: 40px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+
+.opinie-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+.prev-btn, .next-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+
+#opinie-klientow {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.opinia {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
+
+
+.opinia h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.ocena {
+    color: gold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.opinia p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+
+.opinia:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+
+#opinie-klientow::-webkit-scrollbar {
+    height: 8px;
+}
+
+#opinie-klientow::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+#opinie-klientow::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Footer */
+footer {
+    padding: 40px 20px;
+    background-color: #4a342e;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer .social-icons img {
+    height: 30px;
+    margin: 0 10px;
+    cursor: pointer;
+}
