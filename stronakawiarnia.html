@@ -23,6 +23,10 @@
                 <li class="nav-item"><a href="#oferta" class="nav-link">Oferta</a></li>
                 <li class="nav-item"><a href="#lokale" class="nav-link">Nasze lokale</a></li>
                 <li class="nav-item"><a href="#kontakt" class="nav-link">Kontakt</a></li>
+                <li class="nav-item koszyk-menu">
+                    <a href="#koszyk" class="nav-link">Koszyk</a>
+                    <div id="koszyk-podglad" class="koszyk-podglad"></div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -209,34 +213,35 @@
         <h2>Sklep</h2>
         <div class="produkty">
             <div class="produkt">
-                <img src="Placeholder.png" alt="Produkt 1">
+                <img src="Arabica.png" alt="Produkt 1">
                 <h3>Kawa Arabica</h3>
                 <select class="gramatura">
-                    <option value="200">200g</option>
-                    <option value="1000">1kg</option>
+                    <option value="200" data-price="35">200g - 35 zł</option>
+                    <option value="1000" data-price="80">1kg - 80 zł</option>
                 </select>
                 <button class="add-to-cart" data-id="1">Dodaj do koszyka</button>
             </div>
             <div class="produkt">
-                <img src="Placeholder.png" alt="Produkt 2">
+                <img src="Robusta.png" alt="Produkt 2">
                 <h3>Kawa Robusta</h3>
                 <select class="gramatura">
-                    <option value="200">200g</option>
-                    <option value="1000">1kg</option>
+                    <option value="200" data-price="35">200g - 35 zł</option>
+                    <option value="1000" data-price="80">1kg - 80 zł</option>
                 </select>
                 <button class="add-to-cart" data-id="2">Dodaj do koszyka</button>
             </div>
             <div class="produkt">
-                <img src="Placeholder.png" alt="Produkt 3">
+                <img src="Liberika.png" alt="Produkt 3">
                 <h3>Kawa Liberika</h3>
                 <select class="gramatura">
-                    <option value="200">200g</option>
-                    <option value="1000">1kg</option>
+                    <option value="200" data-price="35">200g - 35 zł</option>
+                    <option value="1000" data-price="80">1kg - 80 zł</option>
                 </select>
                 <button class="add-to-cart" data-id="3">Dodaj do koszyka</button>
             </div>
         </div>
     </section>
+    
 </main>
 
 <footer>
@@ -260,6 +265,78 @@
         </div>
     </div>
 </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let koszyk = JSON.parse(localStorage.getItem('koszyk')) || [];
+        const koszykPodglad = document.getElementById('koszyk-podglad');
+        const przyciskiDodaj = document.querySelectorAll('.add-to-cart');
+
+        function aktualizujKoszyk() {
+            let suma = koszyk.reduce((acc, item) => acc + item.price, 0);
+            koszykPodglad.innerHTML = `
+                <ul>
+                    ${koszyk.map(item => `
+                        <li>
+                            <div>
+                                <img src="${item.image}" alt="${item.name}">
+                                <span>${item.name} (${item.size}g) - ${item.price} zł</span>
+                            </div>
+                            <button data-id="${item.id}">Usuń</button>
+                        </li>
+                    `).join('')}
+                </ul>
+                <div class="koszyk-suma">Suma: ${suma.toFixed(2)} zł</div>
+                <button class="zloz-zamowienie">Złóż zamówienie</button>
+            `;
+
+            koszykPodglad.querySelectorAll('button').forEach(btn => {
+                if (btn.classList.contains('zloz-zamowienie')) {
+                    btn.addEventListener('click', zlozZamowienie);
+                } else {
+                    btn.addEventListener('click', function() {
+                        usunZKoszyka(this.dataset.id);
+                    });
+                }
+            });
+        }
+
+        function dodajDoKoszyka(id, name, image, size, price) {
+            koszyk.push({ id, name, image, size, price });
+            localStorage.setItem('koszyk', JSON.stringify(koszyk));
+            aktualizujKoszyk();
+        }
+
+        function usunZKoszyka(id) {
+            koszyk = koszyk.filter(item => item.id !== id);
+            localStorage.setItem('koszyk', JSON.stringify(koszyk));
+            aktualizujKoszyk();
+        }
+
+        function zlozZamowienie() {
+            alert("Dziękujemy za złożenie zamówienia! Szczegóły zamówienia zostały przesłane na Twój email.");
+            koszyk = [];
+            localStorage.setItem('koszyk', JSON.stringify(koszyk));
+            aktualizujKoszyk();
+        }
+
+        przyciskiDodaj.forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.dataset.id;
+                const produkt = this.closest('.produkt');
+                const name = produkt.querySelector('h3').textContent;
+                const image = produkt.querySelector('img').src;
+                const sizeElement = produkt.querySelector('.gramatura');
+                const size = sizeElement.value;
+                const price = parseFloat(sizeElement.options[sizeElement.selectedIndex].dataset.price);
+                dodajDoKoszyka(id, name, image, size, price);
+            });
+        });
+
+        aktualizujKoszyk();
+    });
+</script>
+
 </body>
 
 </html>

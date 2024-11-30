@@ -55,6 +55,75 @@ header {
     background-color: #4a342e;
 }
 
+.koszyk-menu {
+    position: relative;
+}
+
+.koszyk-podglad {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.koszyk-menu:hover .koszyk-podglad {
+    display: block;
+}
+
+.koszyk-podglad ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.koszyk-podglad ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.koszyk-podglad ul li img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.koszyk-podglad button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.koszyk-suma {
+    font-weight: bold;
+    margin-top: 10px;
+}
+.zloz-zamowienie {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.zloz-zamowienie:hover {
+    background-color: #45a049;
+}
+
+
 h2 {
     font-size: 34px;
     color: #4a342e;
@@ -395,7 +464,81 @@ h2 {
     background-color: #f1f1f1;
 }
 
+#sklep {
+    padding: 50px 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+}
 
+#sklep h2 {
+    font-size: 36px;
+    color: #4a342e;
+    font-family: 'Instrument Serif', serif;
+    margin-bottom: 30px;
+}
+
+.produkty {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.produkt {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.produkt:hover {
+    transform: scale(1.05);
+}
+
+.produkt img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.produkt h3 {
+    font-size: 20px;
+    color: #4a342e;
+    margin: 15px 0;
+    font-family: 'Instrument Serif', serif;
+}
+
+.gramatura {
+    width: 80%;
+    padding: 10px;
+    margin: 10px auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    font-size: 16px;
+    color: #333;
+    font-family: 'Instrument Serif', serif;
+}
+
+.add-to-cart {
+    background-color: #4a342e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-family: 'Instrument Serif', serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #6f4f42;
+    transform: translateY(-3px);
+}
 
 footer {
     text-align: center;
