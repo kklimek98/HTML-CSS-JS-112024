@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylekawiarnia.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -22,7 +23,7 @@
                 <li class="nav-item"><a href="#onas" class="nav-link">O nas</a></li>
                 <li class="nav-item"><a href="#oferta" class="nav-link">Oferta</a></li>
                 <li class="nav-item"><a href="#lokale" class="nav-link">Nasze lokale</a></li>
-                <li class="nav-item"><a href="#kontakt" class="nav-link">Kontakt</a></li>
+                <li class="nav-item"><a href="#sklep" class="nav-link">Sklep</a></li>
                 <li class="nav-item koszyk-menu">
                     <a href="#koszyk" class="nav-link">Koszyk</a>
                     <div id="koszyk-podglad" class="koszyk-podglad"></div>
@@ -165,14 +166,33 @@
     });
 </script>
 
-    <section id="lokale">
-        <h2>Nasze lokale</h2>
-        <div class="lokale-container">
-            <div class="lokal"><img src="Warszawa.png" alt="Lokal 1"></div>
-            <div class="lokal"><img src="Wrocław.png" alt="Lokal 2"></div>
-            <div class="lokal"><img src="Kraków.png" alt="Lokal 3"></div>
+<section id="lokale">
+    <h2>Nasze lokale</h2>
+    <div class="lokale-container">
+        <div class="lokal">
+            <img src="Warszawa.png" alt="Lokal 1">
+            <div class="lokal-info">
+                <h3>Warszawa</h3>
+                <p>ul. Widok 1, Warszawa</p>
+            </div>
         </div>
-    </section>
+        <div class="lokal">
+            <img src="Wrocław.png" alt="Lokal 2">
+            <div class="lokal-info">
+                <h3>Wrocław</h3>
+                <p>ul. Legnicka 2, Wrocław</p>
+            </div>
+        </div>
+        <div class="lokal">
+            <img src="Kraków.png" alt="Lokal 3">
+            <div class="lokal-info">
+                <h3>Kraków</h3>
+                <p>ul. Kwiatowa 3, Kraków</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <section id="Opinie">
         <h2>Opinie klientów</h2>
@@ -246,25 +266,52 @@
 
 <footer>
     <div class="footer-content">
-        <div class="logo"><img src="Logo SR.png" alt="Logo"></div>
-        <div class="contact">
-            <p>Adres: ul. Placeholder 1, Miasto</p>
-            <p>Tel: +48 123 456 789</p>
+        <!-- Logo -->
+        <div class="logo">
+            <img src="Logo SR.png" alt="Logo">
         </div>
+
+        <!-- Informacje kontaktowe -->
+        <div class="contact">
+            <p>ul. Widok 1, Warszawa</p>
+            <p>ul. Legnicka 2, Wrocław</p>
+            <p>ul. Kwiatowa 3, Kraków</p>
+        </div>
+
+        <!-- Formularz newslettera -->
         <div class="newsletter">
             <h4>Zapisz się do newslettera</h4>
-            <form>
-                <input type="email" placeholder="Twój email">
-                <button>Wyślij</button>
+            <form id="newsletterForm">
+                <input type="email" id="newsletterEmail" placeholder="Twój email" required>
+                <button type="submit">Wyślij</button>
             </form>
         </div>
+
+        <!-- Social media -->
         <div class="social-media">
-            <a href="#"><img src="insta.png" alt="Instagram"></a>
-            <a href="#"><img src="fb.png" alt="Facebook"></a>
-            <a href="#"><img src="tt.png" alt="TikTok"></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
     </div>
 </footer>
+<script>
+    document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        
+        const email = document.getElementById('newsletterEmail').value;
+
+        if (email) {
+            alert(`Dziękujemy za zapisanie się do newslettera! Twój email: ${email}`);
+            
+            localStorage.setItem('newsletterEmail', email);
+
+            document.getElementById('newsletterEmail').value = '';
+        } else {
+            alert("Proszę wprowadzić poprawny adres email.");
+        }
+    });
+</script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
